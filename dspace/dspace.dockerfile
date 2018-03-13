@@ -1,13 +1,13 @@
 FROM janx/ubuntu-dev
 
 # Get dependencies
-RUN sudo apt-get update -q \
-  && sudo apt-get upgrade -qy \
-  && sudo apt-get install -qy \
+RUN sudo apt-get update \
+  && sudo apt-get install -y --no-install-recommends \
      ant \
      maven \
      postgresql \
-     tomcat8
+     tomcat8 \
+  && sudo rm -rf /var/lib/apt/lists/*
 
 # Get source code
 RUN git clone https://github.com/dspace/dspace /home/user/dspace
